@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FlipGame</string>
+    <string name="restart">Restart</string>
+    <string name="steps">Steps: %1$d</string>
+    <string name="congratulation_msg">Congratulations!</string>
+    <string name="won_msg">You won this game by %1$s steps!</string>
+</resources>
