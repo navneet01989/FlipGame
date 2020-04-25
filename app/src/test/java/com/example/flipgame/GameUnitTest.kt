@@ -3,9 +3,6 @@ package com.example.flipgame
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.flipgame.viewmodel.MainViewModel
 import com.example.flipgame.viewmodel.MainViewModel.Companion.NUMBER_OF_PAIRS
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
 import org.junit.Assert.*
