@@ -30,7 +30,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnResetCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnResetCount"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:textSize="24sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

@@ -1,5 +1,6 @@
 package com.example.flipgame.view.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,9 +35,11 @@ class DataAdapter(private val clickListener: ((Int, Int, View) -> Unit)): Recycl
             if(movieModel.show == true) {
                 itemView.setBackgroundResource(R.drawable.round_corner_white)
                 itemView.item_number.text = movieModel.number.toString()
+                itemView.item_number.setTextColor(Color.BLACK)
             } else {
                 itemView.setBackgroundResource(R.drawable.round_corner_blue)
                 itemView.item_number.text = "?"
+                itemView.item_number.setTextColor(Color.WHITE)
             }
         }
     }

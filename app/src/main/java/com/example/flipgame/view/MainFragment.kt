@@ -1,5 +1,6 @@
 package com.example.flipgame.view
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,8 +55,8 @@ class MainFragment : Fragment() {
                 val viewHolderCurrent = recyclerView.findViewHolderForAdapterPosition(viewModel.companionClickPosition.value!!) as? DataAdapter.ViewHolder
                 val viewHolderPrevious = recyclerView.findViewHolderForAdapterPosition(viewModel.previousClickPosition.value!!) as? DataAdapter.ViewHolder
                 if(viewHolderCurrent != null && viewHolderPrevious != null) {
-                    reverseViewAnimation(viewHolderCurrent.itemView)
-                    reverseViewAnimation(viewHolderPrevious.itemView)
+                    reverseViewAnimation(itemView = viewHolderCurrent.itemView)
+                    reverseViewAnimation(itemView = viewHolderPrevious.itemView)
                 }
             }
         })
@@ -73,7 +74,9 @@ class MainFragment : Fragment() {
     private fun flipViewAnimation(itemView: View, numberAtPosition: Int) {
         itemView.animate().withLayer().rotationY(-90f).setDuration(300).withEndAction {
             run {
-                itemView.findViewById<TextView>(R.id.item_number)?.text = numberAtPosition.toString()
+                val itemNumber = itemView.findViewById<TextView>(R.id.item_number)
+                itemNumber?.text = numberAtPosition.toString()
+                itemNumber?.setTextColor(Color.BLACK)
                 itemView.setBackgroundResource(R.drawable.round_corner_white)
                 itemView.rotationY = 90f
                 itemView.animate().withLayer().rotationY(0f).setDuration(300).withEndAction { adapter.notifyDataSetChanged() }.start()
@@ -83,7 +86,9 @@ class MainFragment : Fragment() {
     private fun reverseViewAnimation(itemView: View) {
         itemView.animate().withLayer().rotationY(90f).setDuration(300).withEndAction {
             run {
-                itemView.findViewById<TextView>(R.id.item_number)?.text = "?"
+                val itemNumber = itemView.findViewById<TextView>(R.id.item_number)
+                itemNumber?.text = "?"
+                itemNumber?.setTextColor(Color.WHITE)
                 itemView.setBackgroundResource(R.drawable.round_corner_blue)
                 itemView.rotationY = -90f
                 itemView.animate().withLayer().rotationY(0f).setDuration(300).withEndAction { adapter.notifyDataSetChanged() }.start()
