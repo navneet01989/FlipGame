@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.example.flipgame.model.Number
 
 class MainViewModel: ViewModel() {
-    val NUMBER_OF_PAIRS = 10
+    companion object{
+        const val NUMBER_OF_PAIRS = 10
+    }
     val listNumbers = MutableLiveData<List<Number>>()
     val pairsDone by lazy { MutableLiveData(0) }
     val isCardPendingToClose by lazy { MutableLiveData(false) }

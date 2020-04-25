@@ -1,18 +1,16 @@
 package com.example.flipgame
 
-import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.flipgame.model.Number
-import com.example.flipgame.view.MainFragment
 import com.example.flipgame.viewmodel.MainViewModel
+import com.example.flipgame.viewmodel.MainViewModel.Companion.NUMBER_OF_PAIRS
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
-import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 class GameUnitTest {
@@ -27,6 +25,11 @@ class GameUnitTest {
     @Test
     fun getNumberGenerated() {
         listViewModel.generateNumbers()
-        assertEquals(listViewModel.NUMBER_OF_PAIRS * 2, listViewModel.listNumbers.value?.size)
+        assertEquals(NUMBER_OF_PAIRS * 2, listViewModel.listNumbers.value?.size)
+        listViewModel.previousClickPosition.value = -1
+        listViewModel.increaseStep(1)
+        assertEquals(1, listViewModel.previousClickPosition.value)
+        listViewModel.increaseStep(5)
+        assertEquals(true, listViewModel.listNumbers.value?.get(5)?.show)
     }
 }
